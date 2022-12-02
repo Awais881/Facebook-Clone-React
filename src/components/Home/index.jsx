@@ -221,11 +221,11 @@ function Home() {
         ))}
 
 
-<div className='postFooter'>
+{/* <div className='postFooter'>
         <div> <FontAwesomeIcon icon={faThumbsUp} /> like </div>
         <div> <FontAwesomeIcon icon={faComment} /> comment</div>
         <div> <FontAwesomeIcon icon={faShare} /> share</div>
-      </div>  
+      </div>   */}
             </div> 
        
       );
