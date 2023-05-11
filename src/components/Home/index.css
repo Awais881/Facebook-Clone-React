@@ -21,6 +21,9 @@
     justify-content: space-around;
   }
    */
+   *{
+    background-color: beige;
+   }
    .red {
     color: red;
   }
@@ -75,5 +78,26 @@
   
   }
   button{
+    width: 120px;
+    height: 50px;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    background-color: lightgray;
+    margin-top: 15px;
     margin-left: 10px;
+  }
+  .input{
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    padding: 15px;
+  }
+  .postText{
+   text-align: left;
+   margin-left: 15px;
+  }
+  .time{
+ margin-right: 80px;
+  margin-top: 150px;
   }

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp, faComment, faShare } from '@fortawesome/free-solid-svg-icons'
 import React, { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
+
 import {
   getFirestore, collection,
   addDoc, getDocs, doc,
@@ -15,13 +16,13 @@ import moment from 'moment';
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDN2v_ETZDkRkgi-I5ew8yfX-pT7s7NZ4s",
-    authDomain: "posting-app-9e59f.firebaseapp.com",
-    projectId: "posting-app-9e59f",
-    storageBucket: "posting-app-9e59f.appspot.com",
-    messagingSenderId: "317777961971",
-    appId: "1:317777961971:web:c462d38dab597358d0e886"
-  };
+  apiKey: "AIzaSyDksfrxx2XOm4XRu_xLmSrDLmwu7rLMohg",
+  authDomain: "posting-app-c48c2.firebaseapp.com",
+  projectId: "posting-app-c48c2",
+  storageBucket: "posting-app-c48c2.appspot.com",
+  messagingSenderId: "41415182194",
+  appId: "1:41415182194:web:ccb37e190ceb2e88f7ffeb"
+};
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
@@ -104,7 +105,6 @@ function Home() {
     
           const docRef = await addDoc(collection(db, "posts"), {
             text: postText,
-            // createdOn: new Date().getTime(),
             createdOn: serverTimestamp(),
           });
           console.log("Document written with ID: ", docRef.id);
@@ -129,12 +129,12 @@ function Home() {
         // console.log(Editing.editingfile);
         await updateDoc(doc(db, "posts", editing.editingId), {
           text: editing.editingText,
-          // img: Editing.editingfile,
+         
         }); 
         setEditing({
           editingId: null,
           editingText: "",
-          // editingfile: "",
+         
         });
       };
 
@@ -148,6 +148,7 @@ function Home() {
           <form onSubmit={savePost}>
         <textarea
           type="text"
+          className='input'
           placeholder="What's in your mind..."
           onChange={(e) => {
             setPostText(e.target.value)
@@ -162,11 +163,7 @@ function Home() {
         {posts.map((eachPost, i) => (
           <div className="post" key={i}>
 
-            <h3
-              className="postText"
-              href={eachPost?.url}
-              target="_blank" rel="noreferrer"
-            > 
+            <h3> 
              {(eachPost.id === editing.editingId) ? 
               <form  onSubmit={updatePost}>
                  <input type="text"
@@ -191,7 +188,7 @@ function Home() {
             </h3>
           <br />
 
-        <span>   {
+        <span className='time'>   {
           moment(
             (eachPost?.createdOn?.seconds) ?
             eachPost?.createdOn?.seconds
